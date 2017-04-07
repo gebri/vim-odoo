@@ -7,12 +7,13 @@ Installation
 Install packages:
 - vim
 
-$ sudo apt install vim-gtk # or your preffered
+```bash
+sudo apt install vim-gtk # or your preffered
 
+ln -s ~/path/to/this/vimrc ~/.vimrc
+ln -s ~/path/to/this/vim ~/.vim
+```
 
-Adding helptag in vim 
-
-:helptags ~/.vim/doc
 
 
 Used stuff References
