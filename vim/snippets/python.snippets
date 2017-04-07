@@ -1,0 +1,126 @@
+#
+# Common python snippets
+#
+snippet #!
+	!/usr/bin/env python
+snippet enc
+	# -*- coding: ${1:utf-8} -*-
+	${2}
+snippet cod
+	# -*- coding: ${1:utf-8} -*-
+	${2}
+snippet lic
+	# See LICENSE file for full copyright and licensing details.
+	${1}
+snippet gnu
+	##############################################################################
+	#
+	#    ${1:ModuleName} module for Odoo, ${2:Description}
+	#    Copyright (C) ${3:200X} ${4:Company} (<http://${5:website}>) ${6:author}
+	#
+	#    This file is a part of $1
+	#
+	#    $1 is free software: you can redistribute it and/or modify
+	#    it under the terms of the GNU General Public License as published by
+	#    the Free Software Foundation, either version 3 of the License, or
+	#    (at your option) any later version.
+	#
+	#    $1 is distributed in the hope that it will be useful,
+	#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+	#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	#    GNU General Public License for more details.
+	#
+	#    You should have received a copy of the GNU General Public License
+	#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	#
+	##############################################################################
+	${7}
+snippet vim
+	# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+snippet imp
+	import ${1:module}
+snippet from
+	from ${1:module} import ${2:class}
+	${3}
+snippet main
+	if __name__ == '__main__':
+		${1}
+snippet wh
+	while ${1:expr}:
+		${2:# code}
+snippet for
+	for ${1:item} in ${2:sequence}:
+		${3:# code}
+snippet cl
+	class ${1:Name}(${2:object}):
+		'''$1'''
+		def __init__(self, ${3:arg}):
+			${4:super($1, self).__init__()}
+			self.$3 = $3
+			${5}
+snippet sup
+	super(${1:ClassName}, self).${2:method_name}(${3:args})${4}
+snippet prop
+	def ${1:name}():
+		'''${2:$1 property.}'''
+		def fget(self):
+			${3:return self._$1}
+			
+		def fset(self, value):
+			${4:self._$1 = value}
+	${5}
+snippet def
+	def ${1:func}(${2:`indent('.') ? 'self' : ''`}):
+		''''''
+		${4}
+		${3:return None}
+snippet try
+	try:
+		${6:pass}
+		${7}
+	except ${1:Error} as ${2:e}:
+		${3:raise $2}
+	else:
+		${4:pass}
+	finally:
+		${5:pass}
+snippet wit
+	with ${1:init} as ${2:v}:
+		${3:pass}
+		${4}
+snippet witf
+	with open('${1:filename}') as ${2:f}:
+		for line in $2:
+			${3:pass}
+			${4}
+snippet pdb
+	import pdb
+	pdb.set_trace()
+#
+# Odoo specific snippets
+#
+snippet odoo fields
+	from odoo import models, fields
+	${1}
+snippet odoo fields, api
+	from odoo import models, api, fields
+	${1}
+snippet odoo fields, api, exceptions
+	from odoo import models, api, fields, exceptions
+	${1}
+snippet mnf
+	{
+		'name': '${1:module}',
+		'summary': '$1 is',
+		'version': '1.0',
+		'depends': ['base'],
+		'author': '${2:`g:snips_author`}',
+		'license': '${3:AGPL-3}',
+		'category': 'Uncategorized',
+		'description': '$1 can',
+		'data': [
+			'security/ir.model.access.csv',
+			'views/$1_views.xml',
+		],
+		${4}
+	}
