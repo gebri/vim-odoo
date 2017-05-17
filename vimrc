@@ -82,3 +82,6 @@ highlight Folded ctermfg=6 ctermbg=0
 highlight FoldColumn ctermfg=6 ctermbg=0
 " Toggle folding
 noremap <F3> zi
+" Redraw terminal garbage chars after start
+"autocmd VimEnter * redraw!
+set t_RV=
