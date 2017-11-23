@@ -1,0 +1,33 @@
+# General Java snippets
+snippet {
+	{
+	    ${1}
+	}
+snippet cl
+	public class ${1:`Filename()`} {
+	    ${2}
+	}
+snippet pm
+	public ${1:int} ${2:methodName}(${3}) {
+	    return ${4};
+	}
+snippet pme
+	public ${1:int} ${2:methodName}(${3}) ${4:throws Exception} {
+	    return ${5};
+	}
+snippet pvm
+	public void ${1:methodName}(${2}) {
+	    ${3}
+	}
+snippet pvme
+	public ${1:methodName}(${2}) ${3:throws Exception} {
+	    ${4}
+	}
+snippet main
+	public static void main(String[] args) {
+	    ${1}
+	}
+snippet ass
+	${1:type} ${2:varName} = new $1(${3});
+snippet sout
+	System.out.println(${1});
