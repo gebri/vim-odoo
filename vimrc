@@ -8,7 +8,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_java_javac_config_file_enabled = 1
 " General
@@ -85,3 +85,7 @@ noremap <F3> zi
 " Redraw terminal garbage chars after start
 "autocmd VimEnter * redraw!
 set t_RV=
+" background
+set bg=dark
+" tags support
+set tags=tags;/
