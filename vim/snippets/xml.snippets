@@ -1,7 +1,15 @@
 # General xml snippets
-snippet <?
-	<?xml version="1.0" encoding="UTF-8"?>
+snippet < with elements
+	<${1:element} ${2:attrib}="${3:value}"}>${4}</$1>
+snippet < empty elements
+	<${1:element} ${2:attrib}="${3:value}"/>
+	${4}
+snippet <? simple
+	<?xml version="1.0" ?>
 	${1}
+snippet <? encoding
+	<?xml version="1.0" encoding="${1:UTF-8}"?>
+	${2}
 # Odoo specific snippets
 snippet odoo
 	<odoo>
@@ -9,3 +17,67 @@ snippet odoo
 			${1}
 		</data>
 	</odoo>
+# Ant specific snippets
+snippet project Ant
+	<project name="${1:MyProject}" default="${2:deploy}">
+	    ${3}
+	</project>
+snippet target Ant
+	<target name="${1:init}">
+	    ${2}
+	</target>
+snippet target Ant depends
+	<target name="${1:init}" depends="${2}">
+	    ${3}
+	</target>
+snippet javac Ant
+	<javac srcdir="${1:src}" destdir="${2:build}" />
+	${3}
+snippet javadoc Ant
+	<javadoc destdir="${1:build}"
+	    sourcepath="${2:src}"
+	    packagenames="${3:org.project.*}"/>
+	${4}
+snippet antjar
+	<project name="${1:projectName}" default="${2:dist}">
+		<property name="src" location="${3:src}"/>
+		<property name="build" location="${4:build}"/>
+		<property name="$2" location="${5:dist}"/>
+		
+		<presetdef name="javac">
+			<javac includeantruntime="false" />
+		</presetdef>
+		
+		<target name="init">
+			<mkdir dir="${build}"/>
+		</target>
+		
+		<target name="compile" depends="init">
+			<javac srcdir="${src}" destdir="${build}" />
+		</target>
+		
+		<target name="doc" depends="init">
+			<javadoc destdir="${build}"
+				sourcepath="${src}"
+				packagenames="org.$1.*"/>
+		</target>
+		
+		<target name="$2" depends="compile">
+			<mkdir dir="${$2}"/>
+			<jar destfile="${$2}/$1.jar" basedir="${build}">
+				<manifest>
+					<attribute name="Main-Class" value="org.$1.Main"/>
+				</manifest>
+				${6}
+			</jar>
+		</target>
+		
+		<target name="run" depends="$2">
+			<java jar="${$2}/$1.jar" fork="true"/>
+		</target>
+		
+		<target name="clean">
+			<delete dir="${$2}"/>
+			<delete dir="${build}"/>
+		</target>
+	</project>
